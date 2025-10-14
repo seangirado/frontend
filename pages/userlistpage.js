@@ -8,7 +8,7 @@ export default function UserListPage({ navigation }) {
 
   useEffect(() => {
     axios
-      .get("http://192.168.20.111:8000/Registration/api/users/")
+      .get("http://127.0.0.1:8000/Registration/api/users/")
       .then((res) => {
         setUsers(res.data);
       })
@@ -22,7 +22,7 @@ export default function UserListPage({ navigation }) {
   };
 
   const handleDelete = (id) => {
-    Alert.alert(
+  /*  Alert.alert(
       "Confirm Delete",
       "Are you sure you want to delete this user?",
       [
@@ -32,7 +32,7 @@ export default function UserListPage({ navigation }) {
           style: "destructive",
           onPress: () => {
             axios
-              .delete(`http://192.168.20.111:8000/Registration/api/users/${id}/`)
+              .delete(`http://127.0.0.1:8000/Registration/api/users/${id}/`)
               .then(() => {
                 // Update the users list after deletion
                 setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
@@ -44,7 +44,9 @@ export default function UserListPage({ navigation }) {
           },
         },
       ]
-    );
+    ); */
+
+    axios.delete(`http://127.0.0.1:8000/Registration/api/users/${id}/`)
   };
 
   return (
